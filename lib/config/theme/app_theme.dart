@@ -7,6 +7,7 @@ class AppTheme {
   ThemeData getTheme() => ThemeData(
       useMaterial3: true,
       colorSchemeSeed: colorSeed,
+      appBarTheme: const AppBarTheme(backgroundColor: colorSeed),
       scaffoldBackgroundColor: scaffoldBackgroundColor,
       brightness: Brightness.dark);
 }
