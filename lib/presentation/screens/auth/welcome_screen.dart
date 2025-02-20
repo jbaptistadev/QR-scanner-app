@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:qr_scanner_app/presentation/widgets/shared/custom_filled_button.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -27,44 +28,22 @@ class WelcomeScreen extends StatelessWidget {
                 'Puedes autenticarte de dos formas',
                 style: TextStyle(
                   fontSize: 20,
-                  fontWeight: FontWeight.w300,
+                  fontWeight: FontWeight.w400,
                 ),
               ),
               const SizedBox(
-                height: 120,
+                height: 100,
               ),
-              SizedBox(
-                width: double.infinity,
-                height: 60,
-                child: FilledButton(
-                    onPressed: () {},
-                    child: const Text(
-                      'HUELLA DACTILAR',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    )),
+              CustomFilledButton(
+                text: 'HUELLA DARCTILAR',
+                onPressed: () {},
               ),
               const SizedBox(
                 height: 30,
               ),
-              Container(
-                width: double.infinity,
-                height: 1,
-                color: Colors.white,
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              SizedBox(
-                width: double.infinity,
-                height: 60,
-                child: FilledButton(
-                    onPressed: () {
-                      context.push('/login');
-                    },
-                    child: const Text(
-                      'REGULAR LOGIN',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    )),
+              CustomFilledButton(
+                text: 'REGULAR LOGIN',
+                onPressed: () => context.push('/login'),
               ),
             ],
           ),

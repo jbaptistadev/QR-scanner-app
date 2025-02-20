@@ -35,13 +35,13 @@ class CustomTextFormField extends StatelessWidget {
       style: TextStyle(fontSize: 20, color: colors.primary),
       decoration: InputDecoration(
         floatingLabelStyle: TextStyle(
-            color: colors.primary, fontWeight: FontWeight.bold, fontSize: 18),
+            color: colors.error, fontWeight: FontWeight.bold, fontSize: 18),
         isDense: true,
         label: label != null ? Text(label!) : null,
         hintText: hint,
         errorText: errorMessage,
+        errorStyle: const TextStyle(color: Colors.red),
         focusColor: colors.primary,
-        // icon: Icon( Icons.supervised_user_circle_outlined, color: colors.primary, )
       ),
     );
   }

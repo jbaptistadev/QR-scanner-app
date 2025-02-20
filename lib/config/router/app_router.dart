@@ -1,5 +1,5 @@
 import 'package:go_router/go_router.dart';
-import 'package:qr_scanner_app/presentation/blocs/auth/auth_bloc.dart';
+import 'package:qr_scanner_app/presentation/blocs/auth/global_scope/auth_bloc.dart';
 import 'package:qr_scanner_app/presentation/screens/auth/check_auth_status_screen.dart';
 import 'package:qr_scanner_app/presentation/screens/auth/login_screen.dart';
 import 'package:qr_scanner_app/presentation/screens/auth/welcome_screen.dart';
@@ -51,7 +51,7 @@ void initializeRouter(AuthBloc authBloc) {
       if (authStatus == AuthStatus.notAuthenticated) {
         if (isGoingTo == '/login' || isGoingTo == '/register') return null;
 
-        return '/login';
+        return '/welcome';
       }
 
       if (authStatus == AuthStatus.authenticated &&
