@@ -61,9 +61,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         return;
       }
 
-      logout('No tiene cuenta registrada');
+      logout('USER NOT FOUND');
     } catch (e) {
-      logout('Error no controlado');
+      logout('UNCONTROLLED ERROR');
     }
   }
 
