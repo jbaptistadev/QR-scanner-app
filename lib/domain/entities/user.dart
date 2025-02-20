@@ -1,13 +1,21 @@
 class User {
-  final String id;
-  final String email;
+  final int id;
+  final String username;
   final String fullName;
-  final String token;
+  final String? token;
 
   User({
     required this.id,
-    required this.email,
+    required this.username,
     required this.fullName,
-    required this.token,
+    this.token,
   });
+
+  factory User.fromMap(Map<String, dynamic> map) {
+    return User(
+      username: map['username'],
+      fullName: map['fullName'],
+      id: map['id'],
+    );
+  }
 }

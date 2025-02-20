@@ -10,7 +10,7 @@ class LoginFormProvider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final loginUserCallback = context.read<AuthBloc>().loginUser;
+    final loginUserCallback = context.read<AuthBloc>().authenticateUser;
 
     return BlocProvider(
       create: (_) => LoginFormBloc(loginUserCallback: loginUserCallback),

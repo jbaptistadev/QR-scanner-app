@@ -16,6 +16,6 @@ class LoginUser extends AuthEvent {
 }
 
 class Logout extends AuthEvent {
-  final String errorMessage;
+  final String? errorMessage;
   const Logout(this.errorMessage);
 }

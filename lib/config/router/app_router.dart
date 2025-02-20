@@ -57,6 +57,7 @@ void initializeRouter(AuthBloc authBloc) {
       if (authStatus == AuthStatus.authenticated &&
           (isGoingTo == '/login' ||
               isGoingTo == '/register' ||
+              isGoingTo == '/welcome' ||
               isGoingTo == '/splash')) {
         return '/';
       }
