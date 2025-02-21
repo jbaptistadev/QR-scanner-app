@@ -15,6 +15,10 @@ class LoginUser extends AuthEvent {
   const LoginUser(this.username, this.password);
 }
 
+class BiometricLoginUser extends AuthEvent {
+  const BiometricLoginUser();
+}
+
 class Logout extends AuthEvent {
   final String? errorMessage;
   const Logout(this.errorMessage);

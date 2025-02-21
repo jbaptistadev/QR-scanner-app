@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:qr_scanner_app/presentation/blocs/auth/global_scope/auth_bloc.dart';
 import 'package:qr_scanner_app/presentation/widgets/shared/custom_filled_button.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -36,7 +38,9 @@ class WelcomeScreen extends StatelessWidget {
               ),
               CustomFilledButton(
                 text: 'HUELLA DARCTILAR',
-                onPressed: () {},
+                onPressed: () {
+                  context.read<AuthBloc>().biometricAuthenticateUser();
+                },
               ),
               const SizedBox(
                 height: 30,

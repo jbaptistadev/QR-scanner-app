@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:qr_scanner_app/config/constants/biometric_auth_adapter.dart';
 import 'package:qr_scanner_app/domain/entities/user.dart';
 import 'package:qr_scanner_app/domain/repositories/auth_repository.dart';
 import 'package:qr_scanner_app/domain/repositories/key_value_storage_repository.dart';
@@ -21,6 +22,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       : super(const AuthState()) {
     on<CheckAuthStatus>(_checkAuthStatus);
     on<LoginUser>(_loginUser);
+    on<BiometricLoginUser>(_biometricLoginUser);
 
     on<Logout>((Logout event, Emitter<AuthState> emit) async {
       await authRepository.logout();
@@ -67,6 +69,22 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     }
   }
 
+  void _biometricLoginUser(
+      BiometricLoginUser event, Emitter<AuthState> emit) async {
+    try {
+      final isAvailableFeature = await BiometricAuthPlugin.canAuthenticate;
+
+      print(isAvailableFeature);
+
+      // _setLoggedUser(emit, user);
+    } on CustomError catch (e) {
+      logout(e.message);
+    } catch (e) {
+      // logout();
+      print(e);
+    }
+  }
+
   void _setLoggedUser(Emitter<AuthState> emit, User user) {
     emit(state.copyWith(authStatus: AuthStatus.authenticated, user: user));
     authStateNotifier.value =
@@ -75,6 +93,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   void authenticateUser(String username, String password) {
     add(LoginUser(username, password));
+  }
+
+  void biometricAuthenticateUser() {
+    add(BiometricLoginUser());
   }
 
   void logout([String? errorMessage]) {
