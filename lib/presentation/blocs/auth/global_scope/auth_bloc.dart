@@ -72,16 +72,24 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   void _biometricLoginUser(
       BiometricLoginUser event, Emitter<AuthState> emit) async {
     try {
-      final isAvailableFeature = await BiometricAuthPlugin.canAuthenticate;
+      final bool isAvailableFeature = await BiometricAuthPlugin.canAuthenticate;
 
-      print(isAvailableFeature);
+      if (isAvailableFeature == false) {
+        logout();
+        return;
+      }
 
-      // _setLoggedUser(emit, user);
-    } on CustomError catch (e) {
-      logout(e.message);
+      final bool isAuthenticated = await BiometricAuthPlugin.authenticate();
+
+      if (!isAuthenticated) {
+        logout();
+        return;
+      }
+
+      final user = await authRepository.login('BIOMETRIC_AUTHENTICATED');
+      _setLoggedUser(emit, user);
     } catch (e) {
-      // logout();
-      print(e);
+      logout();
     }
   }
 
