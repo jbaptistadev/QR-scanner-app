@@ -29,9 +29,12 @@ class QRScannerScreen extends StatelessWidget {
               SizedBox(),
               Text('Aqui podras escanear tus QR',
                   style: TextStyle(fontSize: 40)),
-              CustomFilledButton(
-                text: 'Escanear QR',
-                onPressed: () {},
+              Padding(
+                padding: EdgeInsets.only(bottom: 40),
+                child: CustomFilledButton(
+                  text: 'Escanear QR',
+                  onPressed: () {},
+                ),
               )
             ],
           ),
