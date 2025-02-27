@@ -1,16 +1,43 @@
-# qr_scanner_app
+Descripción del Proyecto
+Este proyecto es una aplicación Flutter que integra autenticación biométrica y escaneo de códigos QR. La aplicación está diseñada para funcionar en dispositivos Android y utiliza varias bibliotecas y plugins para proporcionar estas funcionalidades.
 
-A new Flutter project.
+Características del Proyecto
+Autenticación Biométrica:
 
-## Getting Started
+Utiliza la biblioteca androidx.biometric para proporcionar autenticación biométrica.
+Permite a los usuarios autenticarse utilizando huellas dactilares, reconocimiento facial o credenciales del dispositivo (PIN, patrón, contraseña).
+Escaneo de Códigos QR:
 
-This project is a starting point for a Flutter application.
+Utiliza la biblioteca CameraX de Android para acceder a la cámara del dispositivo.
+Utiliza la biblioteca ML Kit de Google para escanear y procesar códigos QR.
+Muestra una vista previa de la cámara y detecta códigos QR en tiempo real.
+Estructura del Proyecto
+El proyecto está estructurado en varias partes clave:
 
-A few resources to get you started if this is your first Flutter project:
+MainActivity.kt:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Configura los canales de método (MethodChannel) para manejar las llamadas desde Flutter.
+Inicializa las clases BiometricAuth y QrScanner para manejar la autenticación biométrica y el escaneo de códigos QR, respectivamente.
+BiometricAuth.kt:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Maneja la autenticación biométrica utilizando la biblioteca androidx.biometric.
+Proporciona métodos para verificar si el dispositivo puede autenticarse biométricamente y para iniciar el proceso de autenticación.
+QrScanner.kt:
+
+Maneja el escaneo de códigos QR utilizando CameraX y ML Kit.
+Configura la vista previa de la cámara y analiza las imágenes en tiempo real para detectar códigos QR.
+Flutter Code:
+
+Proporciona la interfaz de usuario y llama a los métodos nativos a través de los canales de método (MethodChannel).
+Cómo Funciona
+Autenticación Biométrica:
+
+Cuando el usuario solicita autenticarse biométricamente, Flutter llama al método canAuthenticate o authenticate a través del canal de método biometric_auth.
+MainActivity maneja la llamada y delega la tarea a la clase BiometricAuth.
+BiometricAuth verifica si el dispositivo puede autenticarse biométricamente y, si es posible, inicia el proceso de autenticación.
+Escaneo de Códigos QR:
+
+Cuando el usuario solicita escanear un código QR, Flutter llama al método startScanning a través del canal de método qr_scanner.
+MainActivity maneja la llamada y delega la tarea a la clase QrScanner.
+QrScanner configura la vista previa de la cámara y utiliza ML Kit para analizar las imágenes en tiempo real y detectar códigos QR.
+Cuando se detecta un código QR, el resultado se devuelve a Flutter a través del canal de método.
