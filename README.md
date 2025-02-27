@@ -1,4 +1,5 @@
-Descripción del Proyecto
+## Descripción del Proyecto
+
 Este proyecto es una aplicación Flutter que integra autenticación biométrica y escaneo de códigos QR. La aplicación está diseñada para funcionar en dispositivos Android y utiliza varias bibliotecas y plugins para proporcionar estas funcionalidades.
 
 Características del Proyecto
